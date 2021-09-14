@@ -1,1 +1,30 @@
+using System;
+using System.IO;
 
+namespace ShowFilesDemo
+{
+    class Program
+    {
+        static void ShowDirectory(DirectoryInfo dir)
+        {
+            // Показать все файлы
+            foreach (FileInfo file in dir.GetFiles())
+            {
+                Console.WriteLine("FILE: {file.FullName}");
+            }
+            // Рекурсивный перебор // вложенных папок
+            foreach (DirectoryInfo subDir in dir.GetDirectories())
+            {
+                ShowDirectory(subDir);
+            }
+        }
+
+        static void Main(string[] args)
+        {
+            // C#
+            //DirectoryInfo dir = new DirectoryInfo(Environment.SystemDirectory); 
+            DirectoryInfo dir = new DirectoryInfo("c:\temp");
+            ShowDirectory(dir);
+        }
+    }
+}
