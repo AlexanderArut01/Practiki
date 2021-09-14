@@ -1,1 +1,16 @@
+using System;
+using System.IO;
 
+namespace FileDemo
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            StreamReader reader = File.OpenText(@"c:\newfile.txt");
+            string contents = reader.ReadToEnd();
+            reader.Close();
+            Console.WriteLine(contents);
+        }
+    }
+}
